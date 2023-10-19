@@ -29,7 +29,7 @@ while running:
     #draw the brown rectangle
     rectangle_height = 150
     pygame.draw.rect(screen, BROWN, (0, screen_height - rectangle_height, screen_width, rectangle_height))
-    pygame.draw.polygon(screen, BROWN, [(200, screen_height - rectangle_height), (300, 150), (500, 150), (600, screen_height - rectangle_height)])
+    #pygame.draw.polygon(screen, BROWN, [(200, screen_height - rectangle_height), (300, 150), (500, 150), (600, screen_height - rectangle_height)])
     #update the display
     pygame.display.flip()
 
