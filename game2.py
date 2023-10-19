@@ -9,7 +9,7 @@ pygame.init()
 screen_width = 800
 screen_height = 600
 tile_size = 64
-rectangle_height = 150
+rectangle_height = 100
 
 #create screen
 screen = pygame.display.set_mode((screen_width, screen_height))
@@ -58,15 +58,51 @@ def draw_background(surf):
 
 
 #time for the fish
-def draw_fishes
+def draw_fishes(surf):
+    #load some fish tiles from sprites
+    green_fish = pygame.image.load("assets/sprites/green_fish.png").convert()
+    orange_fish = pygame.image.load("assets/sprites/orange_fish.png").convert()
+    puffer_fish = pygame.image.load("assets/sprites/puffer_fish.png").convert()
+    green_fish.set_colorkey((0, 0, 0)) #set png transparency
+    orange_fish.set_colorkey((0, 0, 0))
+    puffer_fish.set_colorkey((0, 0, 0))
 
+    for _ in range(random.randint(1, 5)):
+        x = random.randint(0, screen_width - tile_size)
+        y = random.randint(custom_font.get_height(), screen_height - rectangle_height - 2*tile_size)
+        flip = random.randint(0, 1)
+        if flip == 0:
+            surf.blit(green_fish, (x, y))
+        else:
+            green_fish = pygame.transform.flip(green_fish, True, False)
+            surf.blit(green_fish, (x, y))
 
+    for _ in range(random.randint(1, 5)):
+        x = random.randint(0, screen_width - tile_size)
+        y = random.randint(custom_font.get_height(), screen_height - rectangle_height - 2*tile_size)
+        flip = random.randint(0, 1)
+        if flip == 0:
+            surf.blit(orange_fish, (x, y))
+        else:
+            orange_fish = pygame.transform.flip(orange_fish, True, False)
+            surf.blit(orange_fish, (x, y))
+
+    for _ in range(random.randint(1, 5)):
+        x = random.randint(0, screen_width - tile_size)
+        y = random.randint(custom_font.get_height(), screen_height - rectangle_height - 2*tile_size)
+        flip = random.randint(0, 1)
+        if flip == 0:
+            surf.blit(puffer_fish, (x, y))
+        else:
+            puffer_fish = pygame.transform.flip(puffer_fish, True, False)
+            surf.blit(puffer_fish, (x, y))
 
 
 # Main Loop
 running = True
 background = screen.copy()
 draw_background(background)
+draw_fishes(background)
 
 while running:
     for event in pygame.event.get():
@@ -74,6 +110,8 @@ while running:
                 running = False
     # draw background
     screen.blit(background, (0, 0))
+
+    #draw fish
 
     # update the display
     pygame.display.flip()
