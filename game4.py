@@ -13,7 +13,10 @@ screen_width = 800
 screen_height = 600
 tile_size = 64
 rectangle_height = 100
+
+#initialize the text variables
 custom_font = pygame.font.Font("assets/fonts/Brainfish_Rush.ttf", 128)
+text = custom_font.render('Chomp', True, (255, 0, 0))
 
 #create screen
 screen = pygame.display.set_mode((screen_width, screen_height))
@@ -57,7 +60,6 @@ def draw_background(surf):
         surf.blit(seagrass, (x, y))
 
     #draw the text
-    custom_font = pygame.font.Font("assets/fonts/Brainfish_Rush.ttf", 128)
     text = custom_font.render('Chomp', True, (255, 0, 0))
     surf.blit(text, (screen_width/2 - text.get_width()/2, 0))
 
@@ -85,7 +87,7 @@ while running:
     for fish in fishes:
         if fish.rect.x < -fish.rect.width: #can also use the tile size
             fishes.remove(fish) #remove the fish from the sprite group
-            fishes.add(Fish(random.randint(screen_width, screen_width + 50),
+            fishes.add(Fish(random.randint(screen_width + tile_size / 2, screen_width + tile_size),
                             random.randint(custom_font.get_height(), screen_height - rectangle_height - 2 * tile_size)))
 
 

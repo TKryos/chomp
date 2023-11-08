@@ -14,21 +14,24 @@ screen_height = 600
 tile_size = 64
 rectangle_height = 100
 
+#initialize the text variables
+custom_font = pygame.font.Font("../assets/fonts/Brainfish_Rush.ttf", 128)
+text = custom_font.render('Chomp', True, (255, 0, 0))
 
 #create screen
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Unda da Sea!')
 
-#load our game font
-custom_font = pygame.font.Font("assets/fonts/Brainfish_Rush.ttf", 128)
+#clock object
+clock = pygame.time.Clock()
 
 def draw_background(surf):
     #load our tiles
-    waves = pygame.image.load("assets/sprites/waves.png").convert()
-    water = pygame.image.load("assets/sprites/water.png").convert()
-    sand_top = pygame.image.load("assets/sprites/sand_top.png").convert()
-    seagrass = pygame.image.load("assets/sprites/seagrass.png").convert()
-    sand = pygame.image.load("assets/sprites/sand.png").convert()
+    waves = pygame.image.load("../assets/sprites/waves.png").convert()
+    water = pygame.image.load("../assets/sprites/water.png").convert()
+    sand_top = pygame.image.load("../assets/sprites/sand_top.png").convert()
+    seagrass = pygame.image.load("../assets/sprites/seagrass.png").convert()
+    sand = pygame.image.load("../assets/sprites/sand.png").convert()
     #use png transparency
     sand_top.set_colorkey((0,0,0))
     seagrass.set_colorkey((0,0,0))
@@ -67,37 +70,36 @@ draw_background(background)
 
 #draw fish on the screen
 for _ in range(5):
-    fishes.add(Fish(random.randint(0, screen_width - tile_size),
+    fishes.add(Fish(random.randint(screen_width, 2 * screen_width - tile_size),
                     random.randint(custom_font.get_height(), screen_height - rectangle_height - 2*tile_size)))
 
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
                 running = False
-
     # draw background
     screen.blit(background, (0, 0))
 
-    #draw sprite group fishes
-    fishes.draw(background)
+    #update our fish location
+    fishes.update()
 
-    # update the display
+    #check if any fish is off the screen
+    for fish in fishes:
+        if fish.rect.x < -fish.rect.width: #can also use the tile size
+            fishes.remove(fish) #remove the fish from the sprite group
+            fishes.add(Fish(random.randint(screen_width + tile_size / 2, screen_width + tile_size),
+                            random.randint(custom_font.get_height(), screen_height - rectangle_height - 2 * tile_size)))
+
+
+    #draw the fish
+    fishes.draw(screen)
+
+    #update the display
     pygame.display.flip()
 
-# quit pygame
+    #limit the frame rate
+    clock.tick(60)
+
+#quit pygame
 pygame.quit()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+sys.exit()

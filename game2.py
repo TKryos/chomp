@@ -67,6 +67,7 @@ def draw_fishes(surf):
     orange_fish.set_colorkey((0, 0, 0))
     puffer_fish.set_colorkey((0, 0, 0))
 
+    #set a random number of green_fish and flip some of them
     for _ in range(random.randint(1, 5)):
         x = random.randint(0, screen_width - tile_size)
         y = random.randint(custom_font.get_height(), screen_height - rectangle_height - 2*tile_size)
@@ -77,6 +78,7 @@ def draw_fishes(surf):
             green_fish = pygame.transform.flip(green_fish, True, False)
             surf.blit(green_fish, (x, y))
 
+    #set a random number of orange_fish and flip some of them
     for _ in range(random.randint(1, 5)):
         x = random.randint(0, screen_width - tile_size)
         y = random.randint(custom_font.get_height(), screen_height - rectangle_height - 2*tile_size)
@@ -87,6 +89,7 @@ def draw_fishes(surf):
             orange_fish = pygame.transform.flip(orange_fish, True, False)
             surf.blit(orange_fish, (x, y))
 
+    #set a random number of puffer_fish and flip some of them
     for _ in range(random.randint(1, 5)):
         x = random.randint(0, screen_width - tile_size)
         y = random.randint(custom_font.get_height(), screen_height - rectangle_height - 2*tile_size)
