@@ -5,8 +5,8 @@ import sys
 pygame.init()
 
 #screen dimensions
-screen_width = 800
-screen_height = 600
+screen_width = 1280
+screen_height = 660
 
 #define colors
 BLUE = (0, 0, 255)

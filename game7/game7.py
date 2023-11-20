@@ -54,35 +54,35 @@ while lives > 0 and running:
         #print(event)
         if event.type == pygame.QUIT:
             running = False
-        #control fish with keyboard
-        #player.stop()
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP or event.key == pygame.K_w:
-                #print('you pressed up')
-                player.move_up()
-            if event.key == pygame.K_LEFT or event.key == pygame.K_a:
-                #print('you pressed left')
-                player.move_left()
-            if event.key == pygame.K_DOWN or event.key == pygame.K_s:
-                #print('you pressed down')
-                player.move_down()
-            if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
-                #print('you pressed right')
-                player.move_right()
 
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_UP or event.key == pygame.K_w:
-                #print('you pressed up')
-                player.stop_y()
-            if event.key == pygame.K_LEFT or event.key == pygame.K_a:
-                #print('you pressed left')
-                player.stop_x()
-            if event.key == pygame.K_DOWN or event.key == pygame.K_s:
-                #print('you pressed down')
-                player.stop_y()
-            if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
-                #print('you pressed right')
-                player.stop_x()
+        #control fish with keyboard
+#       if event.type == pygame.KEYDOWN:
+#           if event.key == pygame.K_UP or event.key == pygame.K_w:
+#               #print('you pressed up')
+#               player.move_up()
+#           if event.key == pygame.K_LEFT or event.key == pygame.K_a:
+#               #print('you pressed left')
+#               player.move_left()
+#           if event.key == pygame.K_DOWN or event.key == pygame.K_s:
+#               #print('you pressed down')
+#               player.move_down()
+#           if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
+#               #print('you pressed right')
+#               player.move_right()
+
+#     if event.type == pygame.KEYUP:
+#         if event.key == pygame.K_UP or event.key == pygame.K_w:
+#             #print('you pressed up')
+#             player.stop_y()
+#         if event.key == pygame.K_LEFT or event.key == pygame.K_a:
+#             #print('you pressed left')
+#             player.stop_x()
+#         if event.key == pygame.K_DOWN or event.key == pygame.K_s:
+#             #print('you pressed down')
+#             player.stop_y()
+#         if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
+#             #print('you pressed right')
+#             player.stop_x()
 
     # draw background
     screen.blit(background, (0, 0))
@@ -137,7 +137,7 @@ while lives > 0 and running:
             enemies.remove(enemy)  # remove the fish from the sprite group
             add_enemies(1)
 
-    #draw green fish
+    #draw game objects
     fishes.draw(screen)
     player.draw(screen)
     enemies.draw(screen)

@@ -4,6 +4,8 @@ from fish import Fish, fishes
 import random
 from enemy import Enemy, enemies
 
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
 def draw_background(surf):
     #load our tiles
     waves = pygame.image.load("../assets/sprites/waves.png").convert()
@@ -17,7 +19,7 @@ def draw_background(surf):
     waves.set_colorkey((0,0,0))
 
     #fill the screen
-    #surf.fill(255, 255, 255)
+    #screen.fill((255, 255, 255))
     for x in range(0, SCREEN_WIDTH, TILE_SIZE):
         surf.blit(waves, (x, 0))
 
